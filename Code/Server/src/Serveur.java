@@ -1,3 +1,15 @@
+/**
+ * @authors Jeremie Chatillon et James Smith
+ * @file Serveur.java
+ * Classe permettant la synchronisation d'une variable grace à l'algorithme de lamport.
+ * Nous nous somme basé sur le pseudocode donné au cour.
+ *
+ * Nous avons fait en sorte que toutes les instructions sont en synchronised mis à part
+ *  l'envoit de message pour ne fais faire d'interbloquage.
+ * wait: https://stackoverflow.com/questions/10395509/java-notify-gets-called-before-wait
+ * notifiy: https://community.oracle.com/thread/1179274
+ */
+
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -6,19 +18,10 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Arrays;
 
-/**
- * Classe perettant la synchronisation d'une variable grace à l'algorithme de lamport.
- * Nous nous somme basé sur le pseudocode donné au cour.
- *
- *
- * Nous avons fait en sorte que toutes les instructions sont en synchronised mis à part
- *  l'envoit de message pour ne fais faire d'interbloquage.
- * wait: https://stackoverflow.com/questions/10395509/java-notify-gets-called-before-wait
- * notifiy: https://community.oracle.com/thread/1179274
- */
+
 public class Serveur extends UnicastRemoteObject implements IServer{
 
-    // Vaariable partagée
+    // Variable partagée
     private int var;
     // Nombre de site total
     private int NB_SITE;
@@ -44,7 +47,7 @@ public class Serveur extends UnicastRemoteObject implements IServer{
     private boolean isDebug;
 
     /**
-     *
+     * Constructeur 
      * @param NB_SITE   Nombre de site total
      * @param ID        Id unique du site
      * @param isDebug   permet d'afficher les messages de débug
@@ -71,6 +74,11 @@ public class Serveur extends UnicastRemoteObject implements IServer{
 
     }
 
+    /**
+     * Getter vat (RMI)
+     * @return var
+     * @throws RemoteException
+     */
     @Override
     public int getVar() throws RemoteException {
         synchronized (this) {
@@ -78,6 +86,11 @@ public class Serveur extends UnicastRemoteObject implements IServer{
         }
     }
 
+    /**
+     * Setter "var" (RMI)
+     * @param newVar - nouvelle valeur à donner à var
+     * @throws RemoteException
+     */
     @Override
     public void setVar(int newVar) throws RemoteException {
         debug("Set var started: " + newVar);
@@ -91,6 +104,10 @@ public class Serveur extends UnicastRemoteObject implements IServer{
         fin(newVar);
     }
 
+    /**
+     * Incrémente var (RMI)
+     * @throws RemoteException
+     */
     @Override
     public void increment() throws RemoteException {
         debug("Increment var started");
@@ -207,6 +224,11 @@ public class Serveur extends UnicastRemoteObject implements IServer{
         }
     }
 
+    /**
+     * Recoit message (RMI)
+     * @param message   Message reçu
+     * @throws RemoteException
+     */
     @Override
     public void recoit(CommunicationMessage message) throws RemoteException{
         debug("Message reciew: " + message.getType() + " " + message.getSrvID() + " " + message.getClock());

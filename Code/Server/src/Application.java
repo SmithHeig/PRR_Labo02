@@ -1,14 +1,17 @@
+/**
+ * @authors Jeremie Chatillon et James Smith
+ * @file Application.java
+ * Tâche applicative qui se connecte à un serveur par RMI. Les serveurs doivent être déjà
+ * fonctionnels avant de lancer une tâche. 1 tâche applicative par serveur.
+ * Les serveurs ont leurs id de 0 à N-1.
+ */
+
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Scanner;
 
-/**
- * Tâche applicative qui se connecte à un serveur par RMI. Les serveurs doivent être déjà
- * fonctionnels avant de lancer une tâche. 1 tâche applicative par serveur.
- * Les serveurs ont leurs id de 0 à N-1.
- */
 public class Application {
 
     /**

@@ -1,3 +1,11 @@
+/**
+ * @authors Jeremie Chatillon et James Smith
+ * @file ApplicationText.java
+ * Classe de testes.
+ * Permet de lancer 3 simultanément applicatins qui vont incrémenter une variable
+ * partagée. Il faut que 3 serveurs soient lancé au préalable.
+ */
+
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -5,11 +13,6 @@ import java.rmi.registry.Registry;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Classe de testes.
- * Permet de lancer 3 simultanément applicatins qui vont incrémenter une variable
- * partagée. Il faut que 3 serveurs soient lancé au préalable.
- */
 public class ApplicationTest {
 
     public static void main(String[] args) throws InterruptedException {
@@ -45,7 +48,6 @@ public class ApplicationTest {
     /**
      * Affiche le menu utilisateur
      */
-
     protected static void init(){
         String srvName = CommunicationConfig.SERVERS_NAME + "-" + 0;
         try {

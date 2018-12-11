@@ -1,4 +1,6 @@
 /**
+ * @authors Jeremie Chatillon et James Smith
+ * @file CommunicationConfig.java
  * Cette classe contient les constantes du programme.
  * Le nombre de servveur doit être entré ici, avant le lancement du programme. Les id des
  * serveurs vont de 0 à N-1.

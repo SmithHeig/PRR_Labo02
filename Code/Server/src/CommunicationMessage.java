@@ -1,9 +1,11 @@
-import java.io.Serializable;
-
-
 /**
+ * @authors Jeremie Chatillon et James Smith
+ * @file CommunicationMessage.java
  * Classe serialisable permettant la transmission des messages pour les serveurs RMI.
  */
+
+import java.io.Serializable;
+
 public class CommunicationMessage implements Serializable {
     // Tyoe de messagre
     private String type;

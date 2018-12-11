@@ -1,11 +1,12 @@
-
+/**
+ * @authors Jeremie Chatillon et James Smith
+ * @file IServeer.java
+ * Interface du serveur pur faire du RMI
+ */
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-/**
- * Interface du serveur pur faire du RMI
- */
 public interface IServer extends Remote {
 
     /**
