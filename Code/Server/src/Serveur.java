@@ -130,7 +130,7 @@ public class Serveur extends UnicastRemoteObject implements IServer{
             estampilles[ID] = clock;
             tmpclock = clock;
             cm = new CommunicationMessage(CommunicationConfig.REQUEST_MESSAGE, ID, tmpclock);
-            System.err.println(CommunicationConfig.REQUEST_MESSAGE+ " " + ID+ " " + tmpclock);
+            debug("Message sent: " + CommunicationConfig.REQUEST_MESSAGE+ " " + ID+ " " + tmpclock);
         }
 
         for(int i = 0; i < NB_SITE; ++i){
